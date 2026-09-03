@@ -68,6 +68,9 @@ firebase-adminsdk-*.json
 # Runtime files
 backend/uploads/
 uploads/
+# 개발용 데이터 스냅샷의 업로드 파일은 추적한다
+!backend/dev_data/uploads/
+!backend/dev_data/uploads/**
 backend/private_uploads/
 private_uploads/
 backups/
