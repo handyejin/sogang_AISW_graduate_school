@@ -484,7 +484,13 @@ export default function PostDetailScreen() {
       : imageAttachments[0];
   const galleryTotal = Math.max(imageAttachments.length, 1);
   const isPhotoAlbum = board?.board_type === "album";
-  const hasVisualHero = board?.board_type === "album" || isActivityCertification || isCouncilActivityEntry;
+  // 참여활동(동아리/네트워킹)은 대표 이미지가 있으면 제목과 본문 사이에 hero로 표시한다.
+  // (없으면 hero 영역을 렌더하지 않아 글만 보인다.)
+  const hasVisualHero =
+    board?.board_type === "album" ||
+    isActivityCertification ||
+    isCouncilActivityEntry ||
+    (isAdminParticipationGuide && imageAttachments.length > 0);
   const heroImagePresentation = postDetailImagePresentation({
     placement: "hero",
     boardType: board?.board_type,
